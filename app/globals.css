@@ -1,0 +1,216 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-golos), var(--font-manrope), ui-sans-serif, sans-serif;
+
+  /* Холодная нейтральная гамма — стекло и штукатурка */
+  --color-slate-50: #f5f7fa;
+  --color-slate-100: #eaeff4;
+  --color-slate-200: #d8e0e9;
+  --color-slate-300: #b7c3d1;
+  --color-slate-400: #8a97a8;
+  --color-slate-500: #64738a;
+  --color-slate-600: #4a5769;
+  --color-slate-700: #37414f;
+  --color-slate-800: #222a35;
+  --color-slate-900: #131922;
+  --color-slate-950: #0b0f16;
+
+  /* Акцент — оконное стекло */
+  --color-glass-50: #eef4ff;
+  --color-glass-100: #dde9ff;
+  --color-glass-200: #b8d0ff;
+  --color-glass-300: #8db2fb;
+  --color-glass-400: #5c8ff0;
+  --color-glass-500: #316ade;
+  --color-glass-600: #2453b8;
+  --color-glass-700: #1d4090;
+  --color-glass-800: #1a3570;
+  --color-glass-900: #172c58;
+
+  --radius-card: 1.25rem;
+
+  --animate-fade-up: fade-up 0.5s ease-out both;
+  --animate-drift: drift 22s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes drift {
+    0%,
+    100% {
+      transform: translate(0, 0);
+    }
+    50% {
+      transform: translate(2%, 3%);
+    }
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    overflow-x: clip;
+  }
+
+  body {
+    background-color: var(--color-slate-50);
+    color: var(--color-slate-900);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: clip;
+    overflow-wrap: anywhere;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: var(--color-glass-200);
+    color: var(--color-slate-900);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-glass-500);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    width: 100%;
+    max-width: 78rem;
+    margin-inline: auto;
+    padding-inline: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .container-page {
+      padding-inline: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container-page {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    font-weight: 600;
+    line-height: 1;
+    padding: 0.95rem 1.6rem;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.15s ease;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .btn:active {
+    transform: translateY(1px);
+  }
+
+  .btn-primary {
+    background-color: var(--color-glass-500);
+    color: #fff;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-glass-600);
+  }
+
+  .btn-dark {
+    background-color: var(--color-slate-900);
+    color: var(--color-slate-50);
+  }
+
+  .btn-dark:hover {
+    background-color: var(--color-slate-800);
+  }
+
+  .btn-outline {
+    border: 1px solid var(--color-slate-300);
+    color: var(--color-slate-900);
+    background-color: transparent;
+  }
+
+  .btn-outline:hover {
+    border-color: var(--color-slate-900);
+    background-color: var(--color-slate-100);
+  }
+
+  .btn-ghost-light {
+    border: 1px solid rgb(255 255 255 / 0.35);
+    color: #fff;
+    background-color: rgb(255 255 255 / 0.06);
+    backdrop-filter: blur(4px);
+  }
+
+  .btn-ghost-light:hover {
+    background-color: rgb(255 255 255 / 0.16);
+    border-color: rgb(255 255 255 / 0.6);
+  }
+
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-slate-200);
+    background-color: #fff;
+    padding: 0.35rem 0.8rem 0.35rem 0.55rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-slate-600);
+  }
+
+  .kicker-dot {
+    height: 0.5rem;
+    width: 0.5rem;
+    border-radius: 9999px;
+    background-color: var(--color-glass-500);
+  }
+
+  .card {
+    background-color: #fff;
+    border: 1px solid var(--color-slate-200);
+    border-radius: var(--radius-card);
+  }
+
+  /* Мотив оконной рамы — тонкая перекрестная раскладка, как переплёт окна */
+  .pane-grid {
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px);
+    background-size: 33.33% 50%;
+  }
+
+  .pane-grid-dark {
+    background-image:
+      linear-gradient(rgba(19, 25, 34, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(19, 25, 34, 0.08) 1px, transparent 1px);
+    background-size: 25% 100%;
+  }
+}

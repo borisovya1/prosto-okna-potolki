@@ -1,0 +1,38 @@
+import CallbackButton from "@/components/ui/CallbackButton";
+import { PhoneIcon } from "@/components/ui/icons";
+import { site } from "@/lib/site";
+
+type CtaBannerProps = {
+  title?: string;
+  text?: string;
+  buttonLabel?: string;
+};
+
+export default function CtaBanner({
+  title = "Готовы обсудить проект?",
+  text = "Бесплатный выезд замерщика и точная цена в день замера.",
+  buttonLabel = "Записаться на замер",
+}: CtaBannerProps) {
+  return (
+    <section className="bg-white pb-20 lg:pb-28">
+      <div className="container-page">
+        <div className="flex flex-col items-start gap-8 rounded-[2rem] bg-glass-500 p-8 text-white sm:p-12 lg:flex-row lg:items-center lg:justify-between">
+          <div>
+            <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">{title}</h2>
+            <p className="mt-3 max-w-xl text-glass-50">{text}</p>
+          </div>
+
+          <div className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
+            <CallbackButton className="btn bg-white text-glass-700 hover:bg-glass-50">
+              {buttonLabel}
+            </CallbackButton>
+            <a href={site.phone.href} className="btn btn-ghost-light">
+              <PhoneIcon className="h-5 w-5" />
+              {site.phone.display}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

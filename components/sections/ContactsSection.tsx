@@ -1,4 +1,5 @@
 import LeadForm from "@/components/ui/LeadForm";
+import MapEmbed from "@/components/ui/MapEmbed";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CheckIcon, ClockIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
 import { site } from "@/lib/site";
@@ -60,6 +61,8 @@ export default function ContactsSection() {
               </span>
             </li>
           </ul>
+
+          <MapEmbed className="mt-8" />
         </div>
 
         <div className="rounded-[2rem] bg-slate-900 p-7 text-white sm:p-9">

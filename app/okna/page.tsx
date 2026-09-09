@@ -56,7 +56,7 @@ export default function WindowsPage() {
         visualVariant="glass"
         visualAlt="Монтаж пластикового окна"
         beforeSrc="/images/windows-before.jpg"
-        afterSrc="/images/windows-hero.jpg"
+        afterSrc="/images/windows-after.jpg"
       />
 
       <CardGrid

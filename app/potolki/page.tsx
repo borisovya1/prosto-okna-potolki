@@ -56,7 +56,7 @@ export default function CeilingsPage() {
         visualVariant="ceiling"
         visualAlt="Монтаж натяжного потолка"
         beforeSrc="/images/ceiling-before.jpg"
-        afterSrc="/images/ceiling-hero.jpg"
+        afterSrc="/images/ceiling-after.jpg"
       />
 
       <CardGrid

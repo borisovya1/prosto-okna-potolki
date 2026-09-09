@@ -30,6 +30,8 @@ export default function CeilingsPage() {
     <>
       <PageHero
         variant="ceiling"
+        image="/images/ceiling-hero.jpg"
+        imageAlt="Гостиная с натяжным потолком и подсветкой"
         kicker="Натяжные потолки"
         title="Натяжные потолки под ключ"
         lead="Матовые, глянцевые и сатиновые полотна. Монтаж одной комнаты — за несколько часов, без пыли и грязи от штукатурки."
@@ -53,6 +55,8 @@ export default function CeilingsPage() {
         items={ceilingIncludes}
         visualVariant="ceiling"
         visualAlt="Монтаж натяжного потолка"
+        beforeSrc="/images/ceiling-before.jpg"
+        afterSrc="/images/ceiling-hero.jpg"
       />
 
       <CardGrid

@@ -20,6 +20,8 @@ const item: Variants = {
 
 type PageHeroProps = {
   variant?: "glass" | "ceiling";
+  image?: string;
+  imageAlt?: string;
   kicker?: string;
   title: ReactNode;
   lead: string;
@@ -31,6 +33,8 @@ type PageHeroProps = {
 
 export default function PageHero({
   variant = "glass",
+  image,
+  imageAlt = "",
   kicker,
   title,
   lead,
@@ -44,18 +48,18 @@ export default function PageHero({
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white">
       <div className="absolute inset-0 opacity-90">
-        <Visual alt="" variant={variant} className="h-full w-full" />
+        <Visual src={image} alt={imageAlt} variant={variant} className="h-full w-full" priority sizes="100vw" />
       </div>
       <div
         className="absolute inset-0"
         style={{
           background:
-            "linear-gradient(100deg, rgba(11,15,22,0.95) 0%, rgba(11,15,22,0.86) 40%, rgba(11,15,22,0.55) 100%)",
+            "linear-gradient(100deg, rgba(16,13,10,0.95) 0%, rgba(16,13,10,0.86) 40%, rgba(16,13,10,0.55) 100%)",
         }}
       />
       <div
         className="animate-drift absolute -top-24 -right-16 h-[26rem] w-[26rem] rounded-full opacity-40 blur-[110px]"
-        style={{ background: "radial-gradient(circle, rgba(93,143,240,0.55), transparent 70%)" }}
+        style={{ background: "radial-gradient(circle, rgba(214,154,58,0.55), transparent 70%)" }}
         aria-hidden="true"
       />
 

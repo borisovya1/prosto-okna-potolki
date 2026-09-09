@@ -4,30 +4,30 @@
   --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
   --font-display: var(--font-golos), var(--font-manrope), ui-sans-serif, sans-serif;
 
-  /* Холодная нейтральная гамма — стекло и штукатурка */
-  --color-slate-50: #f5f7fa;
-  --color-slate-100: #eaeff4;
-  --color-slate-200: #d8e0e9;
-  --color-slate-300: #b7c3d1;
-  --color-slate-400: #8a97a8;
-  --color-slate-500: #64738a;
-  --color-slate-600: #4a5769;
-  --color-slate-700: #37414f;
-  --color-slate-800: #222a35;
-  --color-slate-900: #131922;
-  --color-slate-950: #0b0f16;
+  /* Тёплая нейтральная гамма — дерево и штукатурка */
+  --color-slate-50: #f8f5f1;
+  --color-slate-100: #efe8e0;
+  --color-slate-200: #ded2c3;
+  --color-slate-300: #c2b09b;
+  --color-slate-400: #9c8b76;
+  --color-slate-500: #7a6b58;
+  --color-slate-600: #5c5041;
+  --color-slate-700: #443b30;
+  --color-slate-800: #2b251e;
+  --color-slate-900: #1a1611;
+  --color-slate-950: #100d0a;
 
-  /* Акцент — оконное стекло */
-  --color-glass-50: #eef4ff;
-  --color-glass-100: #dde9ff;
-  --color-glass-200: #b8d0ff;
-  --color-glass-300: #8db2fb;
-  --color-glass-400: #5c8ff0;
-  --color-glass-500: #316ade;
-  --color-glass-600: #2453b8;
-  --color-glass-700: #1d4090;
-  --color-glass-800: #1a3570;
-  --color-glass-900: #172c58;
+  /* Акцент — тёплый янтарь */
+  --color-glass-50: #fdf6e9;
+  --color-glass-100: #faebc9;
+  --color-glass-200: #f2d38f;
+  --color-glass-300: #e6b45a;
+  --color-glass-400: #d69a3a;
+  --color-glass-500: #bd7d24;
+  --color-glass-600: #98621c;
+  --color-glass-700: #764c18;
+  --color-glass-800: #563815;
+  --color-glass-900: #3c2810;
 
   --radius-card: 1.25rem;
 

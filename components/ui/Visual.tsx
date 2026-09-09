@@ -40,12 +40,12 @@ export default function Visual({
             style={{
               background:
                 variant === "glass"
-                  ? "linear-gradient(135deg, #17233a 0%, #1d3160 42%, #3d6fd6 78%, #8fb4f2 100%)"
+                  ? "linear-gradient(135deg, #2b2013 0%, #6b4a1e 42%, #d69a3a 78%, #f2d38f 100%)"
                   : variant === "ceiling"
-                    ? "radial-gradient(120% 90% at 50% -10%, #f3f6fb 0%, #cdd8e8 38%, #8695ac 78%, #4c5871 100%)"
+                    ? "radial-gradient(120% 90% at 50% -10%, #fbf6ec 0%, #ecdcc0 38%, #ab8f66 78%, #5c4a34 100%)"
                     : variant === "worn"
-                      ? "linear-gradient(135deg, #3a352c 0%, #59503f 45%, #7c7361 75%, #948b78 100%)"
-                      : "linear-gradient(135deg, #1b2536 0%, #37455c 55%, #64738a 100%)",
+                      ? "linear-gradient(135deg, #35281c 0%, #59452f 45%, #7c6647 75%, #948062 100%)"
+                      : "linear-gradient(135deg, #241c13 0%, #5c4a34 55%, #9c8b76 100%)",
             }}
           />
           {variant === "glass" ? (

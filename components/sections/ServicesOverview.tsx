@@ -22,9 +22,11 @@ export default function ServicesOverview() {
               className="card group grid grid-rows-[12rem_1fr] overflow-hidden transition hover:-translate-y-1 hover:border-glass-300 hover:shadow-xl hover:shadow-slate-900/10"
             >
               <Visual
+                src={service.slug === "okna" ? "/images/windows-hero.jpg" : "/images/ceiling-hero.jpg"}
                 alt={service.title}
                 variant={service.slug === "okna" ? "glass" : "ceiling"}
                 className="h-full w-full"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="flex flex-1 flex-col p-6 sm:p-7">
                 <h3 className="text-xl font-bold text-slate-900">{service.title}</h3>

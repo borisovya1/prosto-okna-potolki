@@ -30,6 +30,8 @@ export default function WindowsPage() {
     <>
       <PageHero
         variant="glass"
+        image="/images/windows-hero.jpg"
+        imageAlt="Тёплая гостиная с панорамными окнами"
         kicker="Окна"
         title="Пластиковые окна под ключ"
         lead="От замера до отделки откосов. Балконы, лоджии и панорамное остекление — своими монтажными бригадами."
@@ -53,6 +55,8 @@ export default function WindowsPage() {
         items={windowIncludes}
         visualVariant="glass"
         visualAlt="Монтаж пластикового окна"
+        beforeSrc="/images/windows-before.jpg"
+        afterSrc="/images/windows-hero.jpg"
       />
 
       <CardGrid

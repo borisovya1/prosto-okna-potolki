@@ -40,6 +40,8 @@ export default function HomePage() {
 
       <PageHero
         variant="glass"
+        image="/images/windows-hero.jpg"
+        imageAlt="Тёплая гостиная с панорамными окнами"
         title={
           <>
             Окна и натяжные потолки под ключ

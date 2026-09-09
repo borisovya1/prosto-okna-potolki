@@ -6,13 +6,14 @@ import Image from "next/image";
  *
  * variant="glass"   — блик и раскладка окна (для раздела про окна)
  * variant="ceiling" — мягкое рассеянное свечение (для раздела про потолки)
+ * variant="worn"    — тусклая, выцветшая поверхность («до» в сравнении до/после)
  * variant="neutral" — нейтральный холодный градиент
  */
 
 type VisualProps = {
   src?: string;
   alt: string;
-  variant?: "glass" | "ceiling" | "neutral";
+  variant?: "glass" | "ceiling" | "worn" | "neutral";
   className?: string;
   sizes?: string;
   priority?: boolean;
@@ -42,7 +43,9 @@ export default function Visual({
                   ? "linear-gradient(135deg, #17233a 0%, #1d3160 42%, #3d6fd6 78%, #8fb4f2 100%)"
                   : variant === "ceiling"
                     ? "radial-gradient(120% 90% at 50% -10%, #f3f6fb 0%, #cdd8e8 38%, #8695ac 78%, #4c5871 100%)"
-                    : "linear-gradient(135deg, #1b2536 0%, #37455c 55%, #64738a 100%)",
+                    : variant === "worn"
+                      ? "linear-gradient(135deg, #3a352c 0%, #59503f 45%, #7c7361 75%, #948b78 100%)"
+                      : "linear-gradient(135deg, #1b2536 0%, #37455c 55%, #64738a 100%)",
             }}
           />
           {variant === "glass" ? (
@@ -57,6 +60,16 @@ export default function Visual({
               aria-hidden="true"
               className="absolute top-[18%] left-1/2 h-24 w-24 -translate-x-1/2 rounded-full opacity-70 blur-2xl"
               style={{ background: "radial-gradient(circle, rgba(255,255,255,0.95), transparent 70%)" }}
+            />
+          ) : null}
+          {variant === "worn" ? (
+            <div
+              aria-hidden="true"
+              className="absolute inset-0 opacity-25"
+              style={{
+                backgroundImage:
+                  "repeating-linear-gradient(95deg, rgba(0,0,0,0.12) 0 1px, transparent 1px 14px)",
+              }}
             />
           ) : null}
           <div

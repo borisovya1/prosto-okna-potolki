@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 
 import CallbackButton from "@/components/ui/CallbackButton";
+import CompareSlider from "@/components/ui/CompareSlider";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import { CheckIcon } from "@/components/ui/icons";
@@ -17,11 +18,16 @@ export default function Checklist({ title, text, items, visualVariant, visualAlt
   return (
     <section className="bg-white py-20 lg:py-28">
       <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-        <Visual
-          alt={visualAlt}
-          variant={visualVariant}
-          className="aspect-4/5 w-full rounded-[2rem] border border-slate-200 lg:order-2"
-        />
+        <div className="lg:order-2">
+          <CompareSlider
+            className="aspect-4/5 w-full rounded-[2rem] border border-slate-200"
+            before={<Visual alt={`До: ${visualAlt}`} variant="worn" className="h-full w-full" />}
+            after={<Visual alt={`После: ${visualAlt}`} variant={visualVariant} className="h-full w-full" />}
+          />
+          <p className="mt-3 text-center text-xs text-slate-400">
+            Потяните ползунок, чтобы сравнить «до» и «после»
+          </p>
+        </div>
 
         <div className="lg:order-1">
           <SectionHeading title={title} text={text} />

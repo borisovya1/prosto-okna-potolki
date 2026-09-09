@@ -1,14 +1,15 @@
 import type { Metadata } from "next";
 
-import CardGrid from "@/components/sections/CardGrid";
+import Advantages from "@/components/sections/Advantages";
 import ContactsSection from "@/components/sections/ContactsSection";
 import CtaBanner from "@/components/sections/CtaBanner";
 import Faq from "@/components/sections/Faq";
 import PageHero from "@/components/sections/PageHero";
 import ProcessSteps from "@/components/sections/ProcessSteps";
+import ServiceMarquee from "@/components/sections/ServiceMarquee";
 import ServicesOverview from "@/components/sections/ServicesOverview";
 import JsonLd from "@/components/seo/JsonLd";
-import { advantages, faq, heroBadges } from "@/lib/content";
+import { faq, heroBadges } from "@/lib/content";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -53,16 +54,11 @@ export default function HomePage() {
         secondaryLabel="Наши услуги"
       />
 
+      <ServiceMarquee />
+
       <ServicesOverview />
 
-      <CardGrid
-        id="about"
-        tone="white"
-        columns={3}
-        title="Почему выбирают нас"
-        text="Работаем как один подрядчик на оба вида отделки: одна заявка, одна бригада, одна гарантия."
-        items={advantages}
-      />
+      <Advantages />
 
       <ProcessSteps />
 

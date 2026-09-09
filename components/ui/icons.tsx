@@ -137,6 +137,13 @@ export const RulerIcon = (props: IconProps) => (
   </Svg>
 );
 
+export const CompareIcon = (props: IconProps) => (
+  <Svg {...props}>
+    <path d="m9 7-5 5 5 5" />
+    <path d="m15 7 5 5-5 5" />
+  </Svg>
+);
+
 export const DocIcon = (props: IconProps) => (
   <Svg {...props}>
     <path d="M7 3h7l4 4v14H7Z" />

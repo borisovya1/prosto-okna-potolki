@@ -1,22 +1,9 @@
-"use client";
-
 import Link from "next/link";
-import { motion, useReducedMotion, type Variants } from "framer-motion";
 import type { ReactNode } from "react";
 
 import CallbackButton from "@/components/ui/CallbackButton";
 import Visual from "@/components/ui/Visual";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
-
-const container: Variants = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.08, delayChildren: 0.15 } },
-};
-
-const item: Variants = {
-  hidden: { opacity: 0, y: 16 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
-};
 
 type PageHeroProps = {
   variant?: "glass" | "ceiling";
@@ -43,8 +30,6 @@ export default function PageHero({
   secondaryHref,
   secondaryLabel,
 }: PageHeroProps) {
-  const reduceMotion = useReducedMotion();
-
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white">
       <div className="absolute inset-0 opacity-90">
@@ -63,32 +48,24 @@ export default function PageHero({
         aria-hidden="true"
       />
 
-      <motion.div
-        className="container-page relative grid gap-10 py-16 sm:gap-14 sm:py-20 lg:py-28"
-        variants={container}
-        initial={reduceMotion ? "show" : "hidden"}
-        animate="show"
-      >
+      <div className="container-page relative grid gap-10 py-16 sm:gap-14 sm:py-20 lg:py-28">
         <div className="max-w-2xl">
           {kicker ? (
-            <motion.span variants={item} className="kicker border-white/15 bg-white/10 text-white">
+            <span className="kicker border-white/15 bg-white/10 text-white">
               <span className="kicker-dot" />
               {kicker}
-            </motion.span>
+            </span>
           ) : null}
 
-          <motion.h1
-            variants={item}
+          <h1
             className={`${kicker ? "mt-5" : ""} text-[1.9rem] leading-[1.1] font-bold tracking-tight sm:text-5xl sm:leading-[1.05] lg:text-[3.4rem]`}
           >
             {title}
-          </motion.h1>
+          </h1>
 
-          <motion.p variants={item} className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">
-            {lead}
-          </motion.p>
+          <p className="mt-6 max-w-xl text-lg leading-relaxed text-slate-300">{lead}</p>
 
-          <motion.div variants={item} className="mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             {primaryCta === "callback" ? (
               <CallbackButton className="btn btn-primary">
                 Оставить заявку
@@ -105,18 +82,18 @@ export default function PageHero({
                 {secondaryLabel}
               </Link>
             ) : null}
-          </motion.div>
+          </div>
 
-          <motion.ul variants={item} className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-8">
+          <ul className="mt-10 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-8">
             {badges.map((badge) => (
               <li key={badge} className="flex items-center gap-2 text-sm text-slate-300">
                 <CheckIcon className="h-4 w-4 shrink-0 text-glass-300" strokeWidth={2.4} />
                 {badge}
               </li>
             ))}
-          </motion.ul>
+          </ul>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

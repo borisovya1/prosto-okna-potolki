@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 
 import CallbackButton from "@/components/ui/CallbackButton";
 import CompareSlider from "@/components/ui/CompareSlider";
+import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Visual from "@/components/ui/Visual";
 import { CheckIcon } from "@/components/ui/icons";
@@ -28,7 +29,7 @@ export default function Checklist({
   return (
     <section className="bg-white py-20 lg:py-28">
       <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-        <div className="lg:order-2">
+        <Reveal className="lg:order-2" delay={0.1}>
           <CompareSlider
             className="aspect-4/5 w-full rounded-[2rem] border border-slate-200"
             before={
@@ -41,9 +42,9 @@ export default function Checklist({
           <p className="mt-3 text-center text-xs text-slate-400">
             Потяните ползунок, чтобы сравнить «до» и «после»
           </p>
-        </div>
+        </Reveal>
 
-        <div className="lg:order-1">
+        <Reveal className="lg:order-1">
           <SectionHeading title={title} text={text} />
 
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
@@ -58,7 +59,7 @@ export default function Checklist({
           </ul>
 
           <CallbackButton className="btn btn-primary mt-9">Рассчитать стоимость</CallbackButton>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

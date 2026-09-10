@@ -1,4 +1,5 @@
 import CallbackButton from "@/components/ui/CallbackButton";
+import Reveal from "@/components/ui/Reveal";
 import { PhoneIcon } from "@/components/ui/icons";
 import { site } from "@/lib/site";
 
@@ -16,7 +17,7 @@ export default function CtaBanner({
   return (
     <section className="bg-white pb-20 lg:pb-28">
       <div className="container-page">
-        <div className="flex flex-col items-start gap-8 rounded-[2rem] bg-glass-500 p-8 text-white sm:p-12 lg:flex-row lg:items-center lg:justify-between">
+        <Reveal className="flex flex-col items-start gap-8 rounded-[2rem] bg-glass-500 p-8 text-white sm:p-12 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <h2 className="text-3xl font-bold tracking-tight text-balance sm:text-4xl">{title}</h2>
             <p className="mt-3 max-w-xl text-glass-50">{text}</p>
@@ -31,7 +32,7 @@ export default function CtaBanner({
               {site.phone.display}
             </a>
           </div>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,5 +1,6 @@
 "use client";
 
+import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -14,122 +15,135 @@ export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 12);
+    let wasScrolled: boolean | null = null;
+
+    const onScroll = () => {
+      const isScrolled = window.scrollY > 12;
+      if (isScrolled !== wasScrolled) {
+        setScrolled(isScrolled);
+        if (wasScrolled !== null) setMobileOpen(false);
+        wasScrolled = isScrolled;
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  useEffect(() => {
-    if (!mobileOpen) return;
+  const closeMenu = () => setMobileOpen(false);
 
-    const previous = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
-    return () => {
-      document.body.style.overflow = previous;
-    };
-  }, [mobileOpen]);
-
-  const mobileMenu = mobileOpen ? (
-    <div className="fixed inset-0 z-[90] lg:hidden">
-      <div className="absolute inset-0 bg-slate-950/60" onClick={() => setMobileOpen(false)} aria-hidden="true" />
-      <div className="absolute inset-y-0 right-0 flex h-dvh w-[min(100%,22rem)] flex-col bg-slate-50 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)] shadow-2xl">
-        <div className="flex h-16 shrink-0 items-center justify-between gap-3 border-b border-slate-200 px-4">
-          <Logo compact />
-          <button
-            type="button"
-            onClick={() => setMobileOpen(false)}
-            aria-label="Закрыть меню"
-            className="grid h-11 w-11 shrink-0 place-items-center rounded-xl border border-slate-200 text-slate-900"
-          >
-            <CloseIcon className="h-5 w-5" />
-          </button>
-        </div>
-
-        <nav
-          onClick={() => setMobileOpen(false)}
-          className="min-h-0 flex-1 divide-y divide-slate-200 overflow-y-auto px-4"
-        >
-          {navLinks.map((link) => (
-            <Link key={link.href} href={link.href} className="block py-4 text-lg font-bold text-slate-900">
-              {link.label}
-            </Link>
-          ))}
-        </nav>
-
-        <div className="shrink-0 border-t border-slate-200 px-4 py-4">
-          <a href={site.phone.href} className="block text-xl font-extrabold text-slate-900">
-            {site.phone.display}
-          </a>
-          <p className="mt-1 text-sm text-slate-400">{site.phone.note}</p>
-          <button
-            type="button"
-            onClick={() => {
-              setMobileOpen(false);
-              openCallback();
-            }}
-            className="btn btn-primary mt-4 w-full"
-          >
-            Заказать звонок
-          </button>
-        </div>
-      </div>
-    </div>
-  ) : null;
+  const insetX = scrolled ? "mx-3 sm:mx-6 lg:mx-10 xl:mx-16" : "mx-0";
 
   return (
-    <>
-      <header
-        className={`sticky top-0 z-50 transition-colors duration-300 ${
+    <header className="sticky top-0 z-50 w-full">
+      <div
+        className={`border-t-0 transition-all duration-300 ease-out ${insetX} ${
           scrolled
-            ? "border-b border-slate-200 bg-slate-50/95 backdrop-blur-md"
-            : "border-b border-transparent bg-slate-50"
+            ? `border-x border-white/10 bg-slate-950/90 px-3 shadow-xl shadow-black/30 backdrop-blur-md sm:px-5 ${
+                mobileOpen ? "rounded-b-none border-b-0" : "rounded-b-2xl border-b"
+              }`
+            : "rounded-none border-x-0 border-b border-white/10 bg-slate-950/95 px-4 sm:px-6 lg:px-10"
         }`}
       >
-        <div className="container-page flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-6">
-          <Logo compact />
+        <div className="grid h-16 grid-cols-[auto_1fr_auto] items-center gap-3 sm:h-20 sm:gap-6">
+          <Logo compact tone="light" />
 
-          <nav className="hidden items-center gap-1 lg:flex" aria-label="Основная навигация">
+          <nav
+            className="hidden items-center justify-self-center lg:flex lg:gap-8 xl:gap-10"
+            aria-label="Основная навигация"
+          >
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
+                className="group relative text-sm font-semibold text-white/70 transition hover:text-white"
               >
                 {link.label}
+                <span className="absolute -bottom-1 left-0 h-px w-0 bg-white transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
 
-          <div className="flex shrink-0 items-center gap-2 sm:gap-3">
+          <div className="flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
             <a
               href={site.phone.href}
-              className="hidden text-sm font-bold text-slate-900 transition hover:text-glass-600 md:block"
+              className="hidden text-sm font-bold text-white/80 transition hover:text-white md:block"
             >
               {site.phone.display}
             </a>
             <button
               type="button"
               onClick={openCallback}
-              className="btn btn-primary hidden px-5 py-2.5 text-sm sm:inline-flex"
+              className="btn btn-light hidden px-5 py-2.5 text-sm sm:inline-flex"
             >
               Заказать звонок
             </button>
-            <a href={site.phone.href} aria-label="Позвонить" className="btn btn-primary p-3 sm:hidden">
+            <a href={site.phone.href} aria-label="Позвонить" className="btn btn-light p-3 sm:hidden">
               <PhoneIcon className="h-5 w-5" />
             </a>
             <button
               type="button"
-              onClick={() => setMobileOpen(true)}
-              aria-label="Открыть меню"
-              className="grid h-11 w-11 place-items-center rounded-xl border border-slate-200 text-slate-900 lg:hidden"
+              onClick={() => setMobileOpen((open) => !open)}
+              aria-label={mobileOpen ? "Закрыть меню" : "Открыть меню"}
+              aria-expanded={mobileOpen}
+              className="grid h-11 w-11 place-items-center rounded-xl border border-white/20 text-white transition hover:bg-white/10 lg:hidden"
             >
-              <MenuIcon className="h-5 w-5" />
+              {mobileOpen ? <CloseIcon className="h-5 w-5" /> : <MenuIcon className="h-5 w-5" />}
             </button>
           </div>
         </div>
-      </header>
-      {mobileMenu}
-    </>
+      </div>
+
+      <AnimatePresence initial={false}>
+        {mobileOpen ? (
+          <motion.div
+            key="mobile-dropdown"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.3, ease: [0.32, 0.72, 0, 1] }}
+            className={`absolute inset-x-0 top-full overflow-hidden rounded-b-2xl border-x border-b border-white/10 shadow-xl shadow-black/30 backdrop-blur-md lg:hidden ${insetX} ${
+              scrolled ? "bg-slate-950/90" : "bg-slate-950/95"
+            }`}
+          >
+            <nav aria-label="Мобильная навигация" className="flex flex-col gap-0.5 border-t border-white/10 pt-3 pb-2">
+              {navLinks.map((link, index) => (
+                <motion.div
+                  key={link.href}
+                  initial={{ opacity: 0, y: -6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.25, delay: 0.04 + index * 0.03, ease: "easeOut" }}
+                >
+                  <Link
+                    href={link.href}
+                    onClick={closeMenu}
+                    className="block rounded-xl px-3 py-3 text-base font-semibold text-white/85 transition hover:bg-white/10 hover:text-white"
+                  >
+                    {link.label}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+
+            <div className="border-t border-white/10 px-3 py-4">
+              <a href={site.phone.href} className="block text-lg font-extrabold text-white">
+                {site.phone.display}
+              </a>
+              <p className="mt-1 text-sm text-white/50">{site.phone.note}</p>
+              <button
+                type="button"
+                onClick={() => {
+                  closeMenu();
+                  openCallback();
+                }}
+                className="btn btn-light mt-4 w-full"
+              >
+                Заказать звонок
+              </button>
+            </div>
+          </motion.div>
+        ) : null}
+      </AnimatePresence>
+    </header>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { MotionConfig } from "framer-motion";
 import { useCallback, useMemo, useState } from "react";
 
 import { ModalContext } from "@/components/modals/modal-context";
@@ -21,7 +22,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 
   return (
     <ModalContext.Provider value={value}>
-      {children}
+      <MotionConfig reducedMotion="user">{children}</MotionConfig>
 
       <Modal open={active === "callback"} onClose={close} labelledBy="callback-title">
         <h2 id="callback-title" className="pr-10 text-2xl font-extrabold text-slate-900">

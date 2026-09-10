@@ -1,3 +1,4 @@
+import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { steps } from "@/lib/content";
 
@@ -12,7 +13,7 @@ export default function ProcessSteps() {
 
         <ol className="mt-14 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
           {steps.map((step, index) => (
-            <li key={step.number} className="relative">
+            <Reveal key={step.number} as="li" delay={index * 0.08} className="relative">
               <div className="flex items-center gap-4 lg:block">
                 <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-slate-900 text-lg font-extrabold text-glass-300">
                   {step.number}
@@ -24,7 +25,7 @@ export default function ProcessSteps() {
 
               <h3 className="mt-5 text-lg font-bold text-slate-900">{step.title}</h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-500">{step.text}</p>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>

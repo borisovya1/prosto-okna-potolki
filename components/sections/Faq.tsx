@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import CallbackButton from "@/components/ui/CallbackButton";
+import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { PlusIcon } from "@/components/ui/icons";
 
@@ -26,16 +27,16 @@ export default function Faq({
   return (
     <section id="faq" className={`scroll-mt-24 py-20 lg:py-28 ${tone === "white" ? "bg-white" : "bg-slate-50"}`}>
       <div className="container-page grid gap-12 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
-        <div className="lg:sticky lg:top-28">
+        <Reveal className="lg:sticky lg:top-28">
           <SectionHeading title={title} text={text} />
           <CallbackButton className="btn btn-primary mt-8">Бесплатный замер</CallbackButton>
-        </div>
+        </Reveal>
 
         <div className="divide-y divide-slate-200 border-y border-slate-200">
           {items.map((item, index) => {
             const isOpen = openIndex === index;
             return (
-              <div key={item.question}>
+              <Reveal key={item.question} delay={Math.min(index, 4) * 0.06} y={16}>
                 <button
                   type="button"
                   onClick={() => setOpenIndex(isOpen ? null : index)}
@@ -57,7 +58,7 @@ export default function Faq({
                     <p className="pr-12 text-sm leading-relaxed text-slate-500 sm:text-base">{item.answer}</p>
                   </div>
                 </div>
-              </div>
+              </Reveal>
             );
           })}
         </div>

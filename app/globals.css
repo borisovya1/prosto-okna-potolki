@@ -158,6 +158,15 @@
     background-color: var(--color-glass-600);
   }
 
+  .btn-light {
+    background-color: #fff;
+    color: var(--color-slate-900);
+  }
+
+  .btn-light:hover {
+    background-color: var(--color-slate-100);
+  }
+
   .btn-dark {
     background-color: var(--color-slate-900);
     color: var(--color-slate-50);

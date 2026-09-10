@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 
 import CallbackButton from "@/components/ui/CallbackButton";
+import Reveal from "@/components/ui/Reveal";
 import Visual from "@/components/ui/Visual";
 import { ArrowRightIcon, CheckIcon } from "@/components/ui/icons";
 
@@ -49,7 +50,7 @@ export default function PageHero({
       />
 
       <div className="container-page relative grid gap-10 py-16 sm:gap-14 sm:py-20 lg:py-28">
-        <div className="max-w-2xl">
+        <Reveal className="max-w-2xl" y={16}>
           {kicker ? (
             <span className="kicker border-white/15 bg-white/10 text-white">
               <span className="kicker-dot" />
@@ -92,7 +93,7 @@ export default function PageHero({
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

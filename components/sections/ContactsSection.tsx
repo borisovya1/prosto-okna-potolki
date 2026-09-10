@@ -1,5 +1,6 @@
 import LeadForm from "@/components/ui/LeadForm";
 import MapEmbed from "@/components/ui/MapEmbed";
+import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
 import { CheckIcon, ClockIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
 import { site } from "@/lib/site";
@@ -10,7 +11,7 @@ export default function ContactsSection() {
   return (
     <section id="contacts" className="scroll-mt-24 bg-white py-20 lg:py-28">
       <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-start">
-        <div>
+        <Reveal>
           <SectionHeading
             title="Оставьте заявку"
             text="Расскажите о вашем окне или потолке — перезвоним в течение рабочего дня и рассчитаем стоимость."
@@ -63,9 +64,9 @@ export default function ContactsSection() {
           </ul>
 
           <MapEmbed className="mt-8" />
-        </div>
+        </Reveal>
 
-        <div className="rounded-[2rem] bg-slate-900 p-7 text-white sm:p-9">
+        <Reveal delay={0.12} className="rounded-[2rem] bg-slate-900 p-7 text-white sm:p-9">
           <h3 className="text-2xl font-extrabold">Оставьте телефон</h3>
           <p className="mt-2 text-sm text-slate-300">Перезвоним в течение рабочего дня и уточним детали.</p>
 
@@ -79,7 +80,7 @@ export default function ContactsSection() {
               </li>
             ))}
           </ul>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

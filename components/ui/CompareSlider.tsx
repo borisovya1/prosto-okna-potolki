@@ -70,7 +70,7 @@ export default function CompareSlider({
       <span className="pointer-events-none absolute bottom-4 left-4 rounded-full bg-slate-950/70 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
         {beforeLabel}
       </span>
-      <span className="pointer-events-none absolute right-4 bottom-4 rounded-full bg-glass-500/90 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
+      <span className="pointer-events-none absolute right-4 bottom-4 rounded-full bg-tape-400 px-3 py-1 text-xs font-bold text-slate-900 backdrop-blur-sm">
         {afterLabel}
       </span>
 
@@ -87,7 +87,7 @@ export default function CompareSlider({
         aria-valuemin={0}
         aria-valuemax={100}
         onKeyDown={onKeyDown}
-        className="absolute top-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-white bg-glass-500 text-white shadow-lg outline-none focus-visible:ring-2 focus-visible:ring-white"
+        className="absolute top-1/2 grid h-11 w-11 -translate-x-1/2 -translate-y-1/2 cursor-ew-resize place-items-center rounded-full border-2 border-white bg-tape-400 text-slate-900 shadow-lg outline-none focus-visible:ring-2 focus-visible:ring-white"
         style={{ left: `${value}%` }}
       >
         <CompareIcon className="h-5 w-5" />

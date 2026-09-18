@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Golos_Text, Manrope } from "next/font/google";
+import { Geologica, Onest } from "next/font/google";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -9,17 +9,17 @@ import { site } from "@/lib/site";
 
 import "./globals.css";
 
-const manrope = Manrope({
+const onest = Onest({
   subsets: ["latin", "cyrillic"],
   display: "swap",
-  variable: "--font-manrope",
+  variable: "--font-onest",
 });
 
-const golos = Golos_Text({
+const geologica = Geologica({
   subsets: ["latin", "cyrillic"],
   display: "swap",
-  variable: "--font-golos",
-  weight: ["500", "600", "700"],
+  variable: "--font-geologica",
+  weight: ["500", "600", "700", "800"],
 });
 
 export const metadata: Metadata = {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#100d0a",
+  themeColor: "#f3f6f7",
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
@@ -75,7 +75,7 @@ const organizationSchema = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ru" className={`${manrope.variable} ${golos.variable}`}>
+    <html lang="ru" className={`${onest.variable} ${geologica.variable}`}>
       <body className="font-sans antialiased">
         <script
           type="application/ld+json"

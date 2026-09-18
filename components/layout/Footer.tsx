@@ -16,7 +16,7 @@ export default function Footer() {
             href={site.social.ok}
             target="_blank"
             rel="noreferrer noopener"
-            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-glass-300"
+            className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-tape-300"
           >
             Отзывы и работы в Одноклассниках
           </a>
@@ -27,7 +27,7 @@ export default function Footer() {
           <ul className="mt-4 space-y-2.5 text-sm">
             {navLinks.map((link) => (
               <li key={link.href}>
-                <Link href={link.href} className="transition hover:text-glass-300">
+                <Link href={link.href} className="transition hover:text-tape-300">
                   {link.label}
                 </Link>
               </li>
@@ -39,32 +39,32 @@ export default function Footer() {
           <h3 className="text-sm font-bold text-white">Контакты</h3>
           <ul className="mt-4 space-y-4 text-sm">
             <li className="flex gap-3">
-              <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-glass-400" />
+              <PhoneIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
               <span>
-                <a href={site.phone.href} className="block text-base font-bold text-white transition hover:text-glass-300">
+                <a href={site.phone.href} className="block text-base font-bold text-white transition hover:text-tape-300">
                   {site.phone.display}
                 </a>
                 <span className="text-xs text-slate-500">{site.phone.note}</span>
               </span>
             </li>
             <li className="flex gap-3">
-              <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-glass-400" />
+              <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
               <span>
-                <a href={site.email.href} className="block font-semibold text-white transition hover:text-glass-300">
+                <a href={site.email.href} className="block font-semibold text-white transition hover:text-tape-300">
                   {site.email.display}
                 </a>
                 <span className="text-xs text-slate-500">{site.email.note}</span>
               </span>
             </li>
             <li className="flex gap-3">
-              <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-glass-400" />
+              <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
               <span>
                 <span className="block font-semibold text-white">{site.address.note}</span>
                 <span className="text-xs text-slate-500">{site.address.display}</span>
               </span>
             </li>
             <li className="flex gap-3">
-              <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-glass-400" />
+              <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
               <span className="text-xs text-slate-500">{site.workingHours}</span>
             </li>
           </ul>
@@ -83,13 +83,13 @@ export default function Footer() {
             </p>
           </div>
           <div className="flex flex-wrap gap-x-5 gap-y-2">
-            <Link href="/politika/" className="transition hover:text-glass-300">
+            <Link href="/politika/" className="transition hover:text-tape-300">
               Политика конфиденциальности
             </Link>
-            <Link href="/soglasie/" className="transition hover:text-glass-300">
+            <Link href="/soglasie/" className="transition hover:text-tape-300">
               Согласие на обработку данных
             </Link>
-            <CookieSettingsButton className="cursor-pointer transition hover:text-glass-300" />
+            <CookieSettingsButton className="cursor-pointer transition hover:text-tape-300" />
           </div>
         </div>
       </div>

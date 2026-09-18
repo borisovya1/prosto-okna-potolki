@@ -50,7 +50,7 @@ export default function Checklist({
           <ul className="mt-8 grid gap-3 sm:grid-cols-2">
             {items.map((entry) => (
               <li key={entry} className="flex items-start gap-3 text-sm text-slate-700">
-                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-glass-50 text-glass-600">
+                <span className="mt-0.5 grid h-6 w-6 shrink-0 place-items-center rounded-full bg-pane-50 text-pane-600">
                   <CheckIcon className="h-3.5 w-3.5" strokeWidth={2.6} />
                 </span>
                 {entry}

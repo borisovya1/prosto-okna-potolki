@@ -1,44 +1,32 @@
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { CheckIcon } from "@/components/ui/icons";
 import { advantages } from "@/lib/content";
-
-const [featured, ...rest] = advantages;
 
 export default function Advantages() {
   return (
-    <section id="about" className="scroll-mt-24 bg-white py-20 lg:py-28">
-      <div className="container-page">
-        <SectionHeading
-          title="Почему выбирают нас"
-          text="Работаем как один подрядчик на оба вида отделки: одна заявка, одна бригада, одна гарантия."
-        />
+    <section id="about" className="scroll-mt-24 bg-slate-50 py-20 lg:py-28">
+      <div className="container-page grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+        <Reveal className="lg:sticky lg:top-28 lg:self-start">
+          <SectionHeading
+            title="Почему выбирают нас"
+            text="Работаем как один подрядчик на оба вида отделки: одна заявка, одна бригада, одна гарантия."
+          />
+        </Reveal>
 
-        <div className="mt-12 grid gap-4 lg:grid-cols-3">
-          <Reveal className="lg:col-span-1 lg:row-span-2">
-            <div className="flex h-full flex-col justify-between rounded-[1.5rem] bg-slate-900 p-8 text-white">
-              <span className="grid h-12 w-12 place-items-center rounded-full bg-white/10 text-glass-300">
-                <CheckIcon className="h-6 w-6" strokeWidth={2.2} />
-              </span>
-              <div className="mt-8">
-                <h3 className="text-2xl font-bold text-balance">{featured.title}</h3>
-                <p className="mt-3 leading-relaxed text-slate-300">{featured.text}</p>
-              </div>
+        <dl className="border-t-2 border-slate-900">
+          {advantages.map((entry) => (
+            <div
+              key={entry.title}
+              className="grid gap-2 border-b border-slate-200 py-6 sm:grid-cols-[minmax(0,1fr)_minmax(0,1.25fr)] sm:gap-8"
+            >
+              <dt className="flex items-start gap-3 font-display text-lg font-bold text-slate-900">
+                <span className="mt-1.5 h-4 w-1 shrink-0 bg-tape-400" aria-hidden="true" />
+                {entry.title}
+              </dt>
+              <dd className="text-sm leading-relaxed text-slate-600 sm:text-base">{entry.text}</dd>
             </div>
-          </Reveal>
-
-          <div className="grid gap-4 sm:grid-cols-2 lg:col-span-2">
-            {rest.map((entry, index) => (
-              <Reveal key={entry.title} delay={0.08 * (index + 1)} className="card p-6">
-                <span className="grid h-10 w-10 place-items-center rounded-full bg-glass-50 text-glass-600">
-                  <CheckIcon className="h-5 w-5" strokeWidth={2.2} />
-                </span>
-                <h3 className="mt-4 font-bold text-slate-900">{entry.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-500">{entry.text}</p>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+          ))}
+        </dl>
       </div>
     </section>
   );

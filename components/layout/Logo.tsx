@@ -15,7 +15,7 @@ export default function Logo({
     <Link href="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3" aria-label={site.name}>
       <span
         className={`grid h-10 w-10 shrink-0 place-items-center rounded-xl sm:h-11 sm:w-11 ${
-          isLight ? "bg-white/10 text-glass-300" : "bg-slate-900 text-glass-300"
+          isLight ? "bg-white/10 text-tape-300" : "bg-slate-900 text-tape-300"
         }`}
       >
         {/* Полотно потолка над окном: дуга и четыре стекла */}
@@ -25,9 +25,9 @@ export default function Logo({
             fill="none"
             strokeWidth="5"
             strokeLinecap="round"
-            className="stroke-glass-200"
+            className="stroke-pane-200"
           />
-          <g className="fill-glass-400">
+          <g className="fill-tape-400">
             <rect x="13" y="27" width="17.5" height="12" rx="2.5" />
             <rect x="33.5" y="27" width="17.5" height="12" rx="2.5" />
             <rect x="13" y="42" width="17.5" height="12" rx="2.5" />

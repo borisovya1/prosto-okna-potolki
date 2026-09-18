@@ -37,8 +37,8 @@ export default function LeadForm({
   const fieldClass = [
     "w-full rounded-full border px-5 py-3.5 text-base outline-none transition",
     isDark
-      ? "border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:border-glass-300"
-      : "border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-glass-400",
+      ? "border-white/20 bg-white/10 text-white placeholder:text-white/50 focus:border-tape-300"
+      : "border-slate-200 bg-white text-slate-900 placeholder:text-slate-400 focus:border-pane-500",
   ].join(" ");
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
@@ -150,14 +150,14 @@ export default function LeadForm({
             setConsent(event.target.checked);
             if (event.target.checked) setError(null);
           }}
-          className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-glass-500"
+          className="mt-0.5 h-4 w-4 shrink-0 cursor-pointer accent-pane-600"
         />
         <span>
           Я даю{" "}
           <Link
             href="/soglasie/"
             target="_blank"
-            className="underline underline-offset-2 hover:text-glass-400"
+            className={`underline underline-offset-2 ${isDark ? "hover:text-tape-300" : "hover:text-pane-600"}`}
           >
             согласие на обработку персональных данных
           </Link>{" "}
@@ -165,7 +165,7 @@ export default function LeadForm({
           <Link
             href="/politika/"
             target="_blank"
-            className="underline underline-offset-2 hover:text-glass-400"
+            className={`underline underline-offset-2 ${isDark ? "hover:text-tape-300" : "hover:text-pane-600"}`}
           >
             политикой обработки данных
           </Link>

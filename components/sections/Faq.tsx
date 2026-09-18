@@ -46,7 +46,7 @@ export default function Faq({
                   <span className="text-base font-bold text-slate-900 sm:text-lg">{item.question}</span>
                   <span
                     className={`mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border transition ${
-                      isOpen ? "rotate-45 border-glass-500 bg-glass-500 text-white" : "border-slate-300 text-slate-600"
+                      isOpen ? "rotate-45 border-tape-400 bg-tape-400 text-slate-900" : "border-slate-300 text-slate-600"
                     }`}
                   >
                     <PlusIcon className="h-4 w-4" />

@@ -1,48 +1,46 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: var(--font-manrope), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-golos), var(--font-manrope), ui-sans-serif, sans-serif;
+  --font-sans: var(--font-onest), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-geologica), var(--font-onest), ui-sans-serif, sans-serif;
 
-  /* Тёплая нейтральная гамма — дерево и штукатурка */
-  --color-slate-50: #f8f5f1;
-  --color-slate-100: #efe8e0;
-  --color-slate-200: #ded2c3;
-  --color-slate-300: #c2b09b;
-  --color-slate-400: #9c8b76;
-  --color-slate-500: #7a6b58;
-  --color-slate-600: #5c5041;
-  --color-slate-700: #443b30;
-  --color-slate-800: #2b251e;
-  --color-slate-900: #1a1611;
-  --color-slate-950: #100d0a;
+  /* Чернила и дневной свет: холодная нейтральная гамма */
+  --color-slate-50: #f3f6f7;
+  --color-slate-100: #e6edf0;
+  --color-slate-200: #d0dbe0;
+  --color-slate-300: #aebcc4;
+  --color-slate-400: #8797a1;
+  --color-slate-500: #63747f;
+  --color-slate-600: #495964;
+  --color-slate-700: #34434d;
+  --color-slate-800: #202c36;
+  --color-slate-900: #131d26;
+  --color-slate-950: #0b121a;
 
-  /* Акцент — тёплый янтарь */
-  --color-glass-50: #fdf6e9;
-  --color-glass-100: #faebc9;
-  --color-glass-200: #f2d38f;
-  --color-glass-300: #e6b45a;
-  --color-glass-400: #d69a3a;
-  --color-glass-500: #bd7d24;
-  --color-glass-600: #98621c;
-  --color-glass-700: #764c18;
-  --color-glass-800: #563815;
-  --color-glass-900: #3c2810;
+  /* Стекло — сине-бирюзовый для текстовых акцентов и иконок на светлом */
+  --color-pane-50: #eaf4f6;
+  --color-pane-100: #d3e8ec;
+  --color-pane-200: #a9d0d8;
+  --color-pane-300: #7db3bf;
+  --color-pane-400: #5497a6;
+  --color-pane-500: #3d7c8b;
+  --color-pane-600: #2f6371;
+  --color-pane-700: #274f5a;
+  --color-pane-800: #1d3b44;
+
+  /* Жёлтый цвет рулетки — только заливки: кнопки, деления, маркеры */
+  --color-tape-50: #fffbe6;
+  --color-tape-100: #fff3b3;
+  --color-tape-200: #ffe770;
+  --color-tape-300: #ffd83a;
+  --color-tape-400: #f5c400;
+  --color-tape-500: #d9ab00;
+  --color-tape-600: #a88300;
 
   --radius-card: 1.25rem;
 
   --animate-fade-up: fade-up 0.5s ease-out both;
   --animate-drift: drift 22s ease-in-out infinite;
-  --animate-marquee: marquee 32s linear infinite;
-
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
-  }
 
   @keyframes fade-up {
     from {
@@ -90,17 +88,16 @@
   }
 
   ::selection {
-    background-color: var(--color-glass-200);
+    background-color: var(--color-tape-200);
     color: var(--color-slate-900);
   }
 
   :focus-visible {
-    outline: 2px solid var(--color-glass-500);
+    outline: 2px solid var(--color-pane-500);
     outline-offset: 2px;
   }
 
   @media (prefers-reduced-motion: reduce) {
-    .animate-marquee,
     .animate-drift {
       animation: none;
     }
@@ -150,12 +147,12 @@
   }
 
   .btn-primary {
-    background-color: var(--color-glass-500);
-    color: #fff;
+    background-color: var(--color-tape-400);
+    color: var(--color-slate-900);
   }
 
   .btn-primary:hover {
-    background-color: var(--color-glass-600);
+    background-color: var(--color-tape-300);
   }
 
   .btn-light {
@@ -216,7 +213,7 @@
     height: 0.5rem;
     width: 0.5rem;
     border-radius: 9999px;
-    background-color: var(--color-glass-500);
+    background-color: var(--color-tape-400);
   }
 
   .card {
@@ -238,5 +235,19 @@
       linear-gradient(rgba(19, 25, 34, 0.08) 1px, transparent 1px),
       linear-gradient(90deg, rgba(19, 25, 34, 0.08) 1px, transparent 1px);
     background-size: 25% 100%;
+  }
+
+  /* Деления рулетки: короткие штрихи каждые 8px, длинный каждые 40px */
+  .ruler-ticks {
+    background-image:
+      linear-gradient(90deg, var(--color-slate-400) 1px, transparent 1px),
+      linear-gradient(90deg, var(--color-slate-300) 1px, transparent 1px);
+    background-size:
+      40px 100%,
+      8px 45%;
+    background-position:
+      0 0,
+      0 100%;
+    background-repeat: repeat-x;
   }
 }

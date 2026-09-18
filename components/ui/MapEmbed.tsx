@@ -23,7 +23,7 @@ export default function MapEmbed({ className = "" }: MapEmbedProps) {
         href={directionsHref}
         target="_blank"
         rel="noreferrer noopener"
-        className="flex items-center justify-between gap-3 border-t border-white/10 bg-slate-900 px-5 py-3.5 text-sm font-semibold text-white transition hover:text-glass-300"
+        className="flex items-center justify-between gap-3 border-t border-white/10 bg-slate-900 px-5 py-3.5 text-sm font-semibold text-white transition hover:text-tape-300"
       >
         Проложить маршрут на Яндекс.Картах
         <ArrowRightIcon className="h-4 w-4 shrink-0" />

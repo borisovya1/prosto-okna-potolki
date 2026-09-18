@@ -14,7 +14,7 @@ export default function NotFound() {
   return (
     <section className="bg-slate-950 pt-40 pb-28 text-white">
       <div className="container-page text-center">
-        <p className="text-7xl font-extrabold text-glass-400">404</p>
+        <p className="text-7xl font-extrabold text-tape-400">404</p>
         <h1 className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl">Страница не найдена</h1>
         <p className="mx-auto mt-4 max-w-lg text-slate-300">
           Возможно, страница была перемещена. Вернитесь на главную или позвоните нам — мы подскажем.

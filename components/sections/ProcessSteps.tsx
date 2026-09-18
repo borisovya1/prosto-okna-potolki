@@ -11,20 +11,29 @@ export default function ProcessSteps() {
           text="От заявки до сдачи объекта — пять понятных шагов, закреплённых в договоре."
         />
 
-        <ol className="mt-14 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-5">
-          {steps.map((step, index) => (
-            <Reveal key={step.number} as="li" delay={index * 0.08} className="relative">
-              <div className="flex items-center gap-4 lg:block">
-                <span className="grid h-14 w-14 shrink-0 place-items-center rounded-2xl bg-slate-900 text-lg font-extrabold text-glass-300">
-                  {step.number}
-                </span>
-                {index < steps.length - 1 ? (
-                  <span className="hidden h-px flex-1 bg-slate-200 lg:absolute lg:top-7 lg:left-16 lg:block lg:w-[calc(100%-3.5rem)]" />
-                ) : null}
-              </div>
+        <ol className="relative mt-14 grid gap-8 lg:grid-cols-5 lg:gap-6">
+          {/* Линейка: шаги стоят на её длинных делениях */}
+          <span
+            className="ruler-ticks pointer-events-none absolute inset-x-0 top-0 hidden h-6 border-t-2 border-slate-900 lg:block"
+            aria-hidden="true"
+          />
 
-              <h3 className="mt-5 text-lg font-bold text-slate-900">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-500">{step.text}</p>
+          {steps.map((step, index) => (
+            <Reveal
+              key={step.number}
+              as="li"
+              delay={index * 0.08}
+              className="relative border-l-2 border-tape-400 pl-5 lg:border-l-0 lg:pt-10 lg:pl-0"
+            >
+              <span
+                className="absolute top-0 left-0 hidden h-9 w-1 bg-tape-400 lg:block"
+                aria-hidden="true"
+              />
+              <span className="block font-display text-4xl leading-none font-extrabold text-slate-900 lg:pl-4">
+                {step.number}
+              </span>
+              <h3 className="mt-3 text-lg font-bold text-slate-900 lg:pl-4">{step.title}</h3>
+              <p className="mt-2 text-sm leading-relaxed text-slate-600 lg:pl-4">{step.text}</p>
             </Reveal>
           ))}
         </ol>

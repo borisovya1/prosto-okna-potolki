@@ -41,7 +41,7 @@ export default function CookieConsent() {
           отказаться; выбор можно изменить в любой момент. Подробнее — в{" "}
           <Link
             href="/politika/#cookie"
-            className="font-semibold text-glass-600 underline underline-offset-2 hover:text-glass-700"
+            className="font-semibold text-pane-600 underline underline-offset-2 hover:text-pane-700"
           >
             политике конфиденциальности
           </Link>

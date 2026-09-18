@@ -33,7 +33,7 @@ export default function CardGrid({
         <div className={`mt-12 grid gap-4 sm:grid-cols-2 ${columns === 3 ? "lg:grid-cols-3" : ""}`}>
           {items.map((entry, index) => (
             <Reveal key={entry.title} delay={(index % 3) * 0.08} className="card p-6">
-              <span className="grid h-10 w-10 place-items-center rounded-full bg-glass-50 text-glass-600">
+              <span className="grid h-10 w-10 place-items-center rounded-full bg-pane-50 text-pane-600">
                 <Icon className="h-5 w-5" strokeWidth={2.2} />
               </span>
               <h3 className="mt-4 font-bold text-slate-900">{entry.title}</h3>

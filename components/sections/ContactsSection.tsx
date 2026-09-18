@@ -7,23 +7,26 @@ import { site } from "@/lib/site";
 
 const perks = ["Бесплатный замер", "Без спама и рассылок", "Расчёт стоимости по телефону"];
 
+const chip = "grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-white/10 text-tape-300";
+
 export default function ContactsSection() {
   return (
-    <section id="contacts" className="scroll-mt-24 bg-white py-20 lg:py-28">
+    <section id="contacts" className="scroll-mt-24 bg-slate-900 py-20 text-white lg:py-28">
       <div className="container-page grid gap-12 lg:grid-cols-2 lg:items-start">
         <Reveal>
           <SectionHeading
+            tone="light"
             title="Оставьте заявку"
             text="Расскажите о вашем окне или потолке — перезвоним в течение рабочего дня и рассчитаем стоимость."
           />
 
           <ul className="mt-10 space-y-5">
             <li className="flex gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-glass-50 text-glass-600">
+              <span className={chip}>
                 <PhoneIcon className="h-6 w-6" />
               </span>
               <span>
-                <a href={site.phone.href} className="block text-xl font-extrabold text-slate-900 transition hover:text-glass-600">
+                <a href={site.phone.href} className="block text-xl font-extrabold transition hover:text-tape-300">
                   {site.phone.display}
                 </a>
                 <span className="text-sm text-slate-400">{site.phone.note}</span>
@@ -31,11 +34,11 @@ export default function ContactsSection() {
             </li>
 
             <li className="flex gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-glass-50 text-glass-600">
+              <span className={chip}>
                 <MailIcon className="h-6 w-6" />
               </span>
               <span>
-                <a href={site.email.href} className="block text-lg font-bold text-slate-900 transition hover:text-glass-600">
+                <a href={site.email.href} className="block text-lg font-bold transition hover:text-tape-300">
                   {site.email.display}
                 </a>
                 <span className="text-sm text-slate-400">{site.email.note}</span>
@@ -43,21 +46,21 @@ export default function ContactsSection() {
             </li>
 
             <li className="flex gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-glass-50 text-glass-600">
+              <span className={chip}>
                 <PinIcon className="h-6 w-6" />
               </span>
               <span>
-                <span className="block text-lg font-bold text-slate-900">{site.address.note}</span>
+                <span className="block text-lg font-bold">{site.address.note}</span>
                 <span className="text-sm text-slate-400">{site.address.display}</span>
               </span>
             </li>
 
             <li className="flex gap-4">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-2xl bg-glass-50 text-glass-600">
+              <span className={chip}>
                 <ClockIcon className="h-6 w-6" />
               </span>
               <span>
-                <span className="block text-lg font-bold text-slate-900">Режим работы</span>
+                <span className="block text-lg font-bold">Режим работы</span>
                 <span className="text-sm text-slate-400">{site.workingHours}</span>
               </span>
             </li>
@@ -66,16 +69,16 @@ export default function ContactsSection() {
           <MapEmbed className="mt-8" />
         </Reveal>
 
-        <Reveal delay={0.12} className="rounded-[2rem] bg-slate-900 p-7 text-white sm:p-9">
+        <Reveal delay={0.12} className="rounded-[2rem] bg-white p-7 text-slate-900 sm:p-9">
           <h3 className="text-2xl font-extrabold">Оставьте телефон</h3>
-          <p className="mt-2 text-sm text-slate-300">Перезвоним в течение рабочего дня и уточним детали.</p>
+          <p className="mt-2 text-sm text-slate-500">Перезвоним в течение рабочего дня и уточним детали.</p>
 
-          <LeadForm source="contacts" tone="dark" withName buttonLabel="Отправить заявку" className="mt-6" />
+          <LeadForm source="contacts" withName buttonLabel="Отправить заявку" className="mt-6" />
 
-          <ul className="mt-7 grid gap-2.5 border-t border-white/10 pt-6 text-sm text-slate-300">
+          <ul className="mt-7 grid gap-2.5 border-t border-slate-200 pt-6 text-sm text-slate-600">
             {perks.map((perk) => (
               <li key={perk} className="flex items-center gap-2.5">
-                <CheckIcon className="h-4 w-4 shrink-0 text-glass-300" strokeWidth={2.5} />
+                <CheckIcon className="h-4 w-4 shrink-0 text-pane-600" strokeWidth={2.5} />
                 {perk}
               </li>
             ))}

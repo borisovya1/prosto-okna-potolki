@@ -196,7 +196,7 @@ export default function Header() {
             <div className="flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
               <a
                 href={site.phone.href}
-                className="hidden px-2 text-sm font-bold whitespace-nowrap text-slate-900 transition hover:text-glass-600 xl:inline-flex"
+                className="hidden px-2 text-sm font-bold whitespace-nowrap text-slate-900 transition hover:text-pane-700 xl:inline-flex"
               >
                 {site.phone.display}
               </a>
@@ -243,11 +243,11 @@ export default function Header() {
                         href={`/${service.slug}`}
                         className="group flex items-start gap-3"
                       >
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-glass-50 text-glass-600 transition group-hover:bg-glass-500 group-hover:text-white">
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-pane-50 text-pane-600 transition group-hover:bg-tape-400 group-hover:text-slate-900 group-hover:text-white">
                           <Icon className="h-5 w-5" />
                         </span>
                         <span>
-                          <span className="block text-sm font-bold text-slate-900 group-hover:text-glass-600">
+                          <span className="block text-sm font-bold text-slate-900 group-hover:text-pane-600">
                             {service.title}
                           </span>
                           <span className="mt-0.5 block text-xs leading-snug text-slate-400">

@@ -49,7 +49,7 @@ export default function PageHero({
         aria-hidden="true"
       />
 
-      <div className="container-page relative grid gap-10 py-16 sm:gap-14 sm:py-20 lg:py-28">
+      <div className="container-page relative grid gap-10 pt-[7.75rem] pb-16 sm:gap-14 sm:pt-[10rem] sm:pb-20 lg:pt-[10.75rem] lg:pb-28">
         <Reveal className="max-w-2xl" y={16}>
           {kicker ? (
             <span className="kicker border-white/15 bg-white/10 text-white">

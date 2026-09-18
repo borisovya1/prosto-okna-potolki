@@ -1,6 +1,7 @@
 import Link from "next/link";
 
 import Logo from "@/components/layout/Logo";
+import CookieSettingsButton from "@/components/ui/CookieSettingsButton";
 import { ClockIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
 import { navLinks, site } from "@/lib/site";
 
@@ -72,12 +73,24 @@ export default function Footer() {
 
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-3 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {site.name}. Все права защищены.
-          </p>
-          <Link href="/politika" className="transition hover:text-glass-300">
-            Политика конфиденциальности
-          </Link>
+          <div className="space-y-1">
+            <p>
+              © {new Date().getFullYear()} {site.name}. Все права защищены.
+            </p>
+            <p>
+              {site.operator.legalName}, ИНН {site.operator.inn}, {site.operator.ogrnLabel}{" "}
+              {site.operator.ogrn}
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-x-5 gap-y-2">
+            <Link href="/politika/" className="transition hover:text-glass-300">
+              Политика конфиденциальности
+            </Link>
+            <Link href="/soglasie/" className="transition hover:text-glass-300">
+              Согласие на обработку данных
+            </Link>
+            <CookieSettingsButton className="cursor-pointer transition hover:text-glass-300" />
+          </div>
         </div>
       </div>
     </footer>

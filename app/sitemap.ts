@@ -13,5 +13,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${base}/okna/`, lastModified, priority: 0.9 },
     { url: `${base}/potolki/`, lastModified, priority: 0.9 },
     { url: `${base}/politika/`, lastModified, priority: 0.2 },
+    { url: `${base}/soglasie/`, lastModified, priority: 0.2 },
   ];
 }

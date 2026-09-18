@@ -18,9 +18,21 @@ export default function Logo({
           isLight ? "bg-white/10 text-glass-300" : "bg-slate-900 text-glass-300"
         }`}
       >
-        <svg viewBox="0 0 24 24" className="h-6 w-6" fill="none" aria-hidden="true">
-          <rect x="3.5" y="3.5" width="17" height="17" rx="1.5" stroke="currentColor" strokeWidth="1.4" />
-          <path d="M12 3.5v17M3.5 12h17" stroke="currentColor" strokeWidth="1.4" />
+        {/* Полотно потолка над окном: дуга и четыре стекла */}
+        <svg viewBox="0 0 64 64" className="h-8 w-8" aria-hidden="true">
+          <path
+            d="M10 20Q32 8 54 20"
+            fill="none"
+            strokeWidth="5"
+            strokeLinecap="round"
+            className="stroke-glass-200"
+          />
+          <g className="fill-glass-400">
+            <rect x="13" y="27" width="17.5" height="12" rx="2.5" />
+            <rect x="33.5" y="27" width="17.5" height="12" rx="2.5" />
+            <rect x="13" y="42" width="17.5" height="12" rx="2.5" />
+            <rect x="33.5" y="42" width="17.5" height="12" rx="2.5" />
+          </g>
         </svg>
       </span>
       <span className="flex min-w-0 flex-col leading-tight">

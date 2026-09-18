@@ -151,3 +151,9 @@ export const DocIcon = (props: IconProps) => (
     <path d="M9.5 13h5M9.5 16.5h5" />
   </Svg>
 );
+
+export const ChevronDownIcon = (props: IconProps) => (
+  <Svg {...props}>
+    <path d="M6 9l6 6 6-6" />
+  </Svg>
+);

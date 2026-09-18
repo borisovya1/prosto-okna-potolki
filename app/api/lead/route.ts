@@ -99,6 +99,13 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
+  if (payload.consent !== true) {
+    return NextResponse.json(
+      { error: "Необходимо согласие на обработку персональных данных" },
+      { status: 400 },
+    );
+  }
+
   const phone = asText(payload.phone, 32);
   const digits = phone.replace(/\D/g, "");
 
@@ -133,7 +140,8 @@ export async function POST(request: Request) {
   for (const [key, value] of details) {
     textLines.push(`${key}: ${value}`);
   }
-  textLines.push("", `${sourceLabel} · ${receivedAt} МСК`);
+  textLines.push("", `Согласие на обработку ПДн: дано (${receivedAt} МСК)`);
+  textLines.push(`${sourceLabel} · ${receivedAt} МСК`);
 
   const htmlRows = [`<p><b>Телефон:</b> ${escapeHtml(phone)}</p>`];
   if (name) htmlRows.push(`<p><b>Имя:</b> ${escapeHtml(name)}</p>`);
@@ -161,6 +169,7 @@ export async function POST(request: Request) {
       html: `
         <h2>Новая заявка — ${escapeHtml(site.name)}</h2>
         ${htmlRows.join("")}
+        <p>Согласие на обработку ПДн: дано (${escapeHtml(receivedAt)} МСК)</p>
         <p><i>${escapeHtml(sourceLabel)} · ${escapeHtml(receivedAt)} МСК</i></p>
       `,
     });

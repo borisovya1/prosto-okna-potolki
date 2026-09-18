@@ -6,6 +6,8 @@ export type Lead = {
   /** Откуда пришла заявка: hero, okna, potolki, contacts, callback */
   source: string;
   details?: Record<string, string>;
+  /** Согласие на обработку ПДн (чекбокс в форме) */
+  consent: boolean;
   /** Honeypot: люди это поле не видят, боты заполняют */
   company?: string;
 };

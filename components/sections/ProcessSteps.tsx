@@ -1,42 +1,45 @@
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { steps } from "@/lib/content";
+import { ceilingSteps, windowSteps } from "@/lib/content";
+
+const groups = [
+  { title: "Изготовление и установка пластиковых окон", steps: windowSteps },
+  { title: "Натяжные потолки", steps: ceilingSteps },
+];
 
 export default function ProcessSteps() {
   return (
     <section id="steps" className="scroll-mt-24 bg-white py-20 lg:py-28">
       <div className="container-page">
-        <SectionHeading
-          title="Как мы работаем"
-          text="От заявки до сдачи объекта — пять понятных шагов, закреплённых в договоре."
-        />
+        <SectionHeading title="Как устроен наш процесс" />
 
-        <ol className="relative mt-14 grid gap-8 lg:grid-cols-5 lg:gap-6">
-          {/* Линейка: шаги стоят на её длинных делениях */}
-          <span
-            className="ruler-ticks pointer-events-none absolute inset-x-0 top-0 hidden h-6 border-t-2 border-slate-900 lg:block"
-            aria-hidden="true"
-          />
-
-          {steps.map((step, index) => (
-            <Reveal
-              key={step.number}
-              as="li"
-              delay={index * 0.08}
-              className="relative border-l-2 border-tape-400 pl-5 lg:border-l-0 lg:pt-10 lg:pl-0"
-            >
-              <span
-                className="absolute top-0 left-0 hidden h-9 w-1 bg-tape-400 lg:block"
-                aria-hidden="true"
-              />
-              <span className="block font-display text-4xl leading-none font-extrabold text-slate-900 lg:pl-4">
-                {step.number}
-              </span>
-              <h3 className="mt-3 text-lg font-bold text-slate-900 lg:pl-4">{step.title}</h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600 lg:pl-4">{step.text}</p>
-            </Reveal>
+        <div className="mt-14 space-y-16">
+          {groups.map((group) => (
+            <div key={group.title}>
+              <h3 className="text-xl font-bold text-slate-900">{group.title}</h3>
+              <ol
+                className={`relative mt-8 grid gap-8 ${
+                  group.steps.length === 4 ? "lg:grid-cols-4" : "lg:grid-cols-3"
+                }`}
+              >
+                {group.steps.map((step, index) => (
+                  <Reveal
+                    key={step.title}
+                    as="li"
+                    delay={index * 0.08}
+                    className="relative border-l-2 border-tape-400 pl-5"
+                  >
+                    <span className="block font-display text-4xl leading-none font-extrabold text-slate-900">
+                      {step.number}
+                    </span>
+                    <h4 className="mt-3 text-lg font-bold text-slate-900">{step.title}</h4>
+                    <p className="mt-2 text-sm leading-relaxed text-slate-600">{step.text}</p>
+                  </Reveal>
+                ))}
+              </ol>
+            </div>
           ))}
-        </ol>
+        </div>
       </div>
     </section>
   );

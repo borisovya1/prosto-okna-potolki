@@ -1,28 +1,24 @@
 import type { Metadata } from "next";
 
 import CardGrid from "@/components/sections/CardGrid";
-import Checklist from "@/components/sections/Checklist";
 import CtaBanner from "@/components/sections/CtaBanner";
-import Faq from "@/components/sections/Faq";
 import PageHero from "@/components/sections/PageHero";
-import { CeilingIcon } from "@/components/ui/icons";
+import WorkGallery from "@/components/sections/WorkGallery";
 import {
-  ceilingFaq,
-  ceilingHighlights,
-  ceilingIncludes,
-  ceilingTypes,
+  ceilingIntro,
+  ceilingPrice,
+  ceilingSteps,
+  fairPrice,
 } from "@/lib/content";
-import { site } from "@/lib/site";
 
-const title = `Натяжные потолки в ${site.regionShort}`;
-const description =
-  "Монтаж натяжных потолков под ключ: матовые, глянцевые и сатиновые полотна, многоуровневые конструкции, встроенное освещение. Бесплатный выезд замерщика.";
+const title = "Натяжные потолки";
+const description = `${ceilingPrice}. ${ceilingIntro}`;
 
 export const metadata: Metadata = {
   title,
   description,
   alternates: { canonical: "/potolki" },
-  openGraph: { url: "/potolki", title: `${title} | ${site.name}`, description },
+  openGraph: { url: "/potolki", title, description },
 };
 
 export default function CeilingsPage() {
@@ -30,50 +26,27 @@ export default function CeilingsPage() {
     <>
       <PageHero
         variant="ceiling"
-        image="/images/ceiling-hero.jpg"
-        imageAlt="Гостиная с натяжным потолком и подсветкой"
+        image="/images/ceilings/2.webp"
+        imageAlt="Натяжной потолок, наши работы"
         kicker="Натяжные потолки"
-        title="Натяжные потолки под ключ"
-        lead="Матовые, глянцевые и сатиновые полотна. Монтаж одной комнаты — за несколько часов, без пыли и грязи от штукатурки."
-        badges={["Бесплатный замер", "Монтаж за один день", "Гарантия на монтаж"]}
+        title={title}
+        lead={description}
+        badges={[ceilingPrice, "Замер бесплатно", "Предоплата 50%"]}
         secondaryHref="/okna"
-        secondaryLabel="Смотреть окна"
+        secondaryLabel="Пластиковые окна"
       />
 
       <CardGrid
         tone="light"
         columns={3}
-        icon={CeilingIcon}
-        title="Какие полотна устанавливаем"
-        text="Подбираем фактуру под задачу: скрыть неровности, добавить света или обойтись без бликов."
-        items={ceilingTypes}
+        title="Как устроен наш процесс"
+        items={ceilingSteps.map(({ title: stepTitle, text }) => ({ title: stepTitle, text }))}
       />
 
-      <Checklist
-        title="Что входит в монтаж"
-        text="От замера до финишной заправки полотна — одна бригада и один визит на объект."
-        items={ceilingIncludes}
-        visualVariant="ceiling"
-        visualAlt="Монтаж натяжного потолка"
-        beforeSrc="/images/ceiling-before.jpg"
-        afterSrc="/images/ceiling-after.jpg"
-      />
+      <WorkGallery />
 
-      <CardGrid
-        tone="light"
-        columns={3}
-        title="Почему это удобно"
-        text="Три причины, почему натяжной потолок чаще выбирают вместо штукатурки и покраски."
-        items={ceilingHighlights}
-      />
 
-      <Faq items={ceilingFaq} title="Вопросы про натяжные потолки" tone="white" />
-
-      <CtaBanner
-        title="Готовы к замеру?"
-        text="Приезжаем, замеряем потолок и называем точную цену — бесплатно и без обязательств."
-        buttonLabel="Записаться на замер"
-      />
+      <CtaBanner title="Заказать монтаж потолка" text={fairPrice} buttonLabel="Заказать" />
     </>
   );
 }

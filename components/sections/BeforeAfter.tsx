@@ -9,17 +9,10 @@ import { ArrowRightIcon } from "@/components/ui/icons";
 const cases = [
   {
     href: "/okna",
-    title: "Окна",
+    title: "Пластиковые окна",
     before: "/images/windows-before.jpg",
     after: "/images/windows-after.jpg",
     variant: "glass",
-  },
-  {
-    href: "/potolki",
-    title: "Натяжные потолки",
-    before: "/images/ceiling-before.jpg",
-    after: "/images/ceiling-after.jpg",
-    variant: "ceiling",
   },
 ] as const;
 
@@ -33,7 +26,7 @@ export default function BeforeAfter() {
           text="Потяните ползунок, чтобы сравнить помещение до работ и после."
         />
 
-        <div className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 grid gap-6 md:max-w-xl">
           {cases.map((item, index) => (
             <Reveal key={item.href} delay={index * 0.1}>
               <CompareSlider

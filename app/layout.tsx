@@ -25,7 +25,7 @@ const geologica = Geologica({
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: `${site.tagline} в ${site.regionShort} | ${site.name}`,
+    default: site.tagline,
     template: `%s | ${site.name}`,
   },
   description: site.description,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ru_RU",
     siteName: site.name,
-    title: `${site.tagline} в ${site.regionShort} | ${site.name}`,
+    title: site.tagline,
     description: site.description,
   },
   robots: {
@@ -67,8 +67,6 @@ const organizationSchema = {
     addressCountry: "RU",
   },
   areaServed: { "@type": "AdministrativeArea", name: site.region },
-  openingHours: "Mo-Sa 09:00-18:00",
-  priceRange: "$$",
   url: site.url,
   sameAs: [site.social.ok],
 };

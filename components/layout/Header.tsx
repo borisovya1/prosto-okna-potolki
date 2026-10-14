@@ -129,7 +129,6 @@ export default function Header() {
               <a href={site.phone.href} className="block text-xl font-extrabold text-slate-900">
                 {site.phone.display}
               </a>
-              <p className="mt-1 text-sm text-slate-400">{site.workingHours}</p>
               <button
                 type="button"
                 onClick={() => {
@@ -173,7 +172,7 @@ export default function Header() {
                   type="button"
                   onClick={() => setMegaOpen((open) => !open)}
                   aria-expanded={megaOpen}
-                  className="flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
+                  className="flex items-center gap-1.5 rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
                 >
                   Услуги
                   <ChevronDownIcon
@@ -186,7 +185,7 @@ export default function Header() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="rounded-full px-3.5 py-2 text-sm font-semibold text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
+                  className="rounded-full px-3.5 py-2 text-sm font-semibold whitespace-nowrap text-slate-700 transition hover:bg-slate-100 hover:text-slate-900"
                 >
                   {link.label}
                 </Link>
@@ -250,7 +249,7 @@ export default function Header() {
                           <span className="block text-sm font-bold text-slate-900 group-hover:text-pane-600">
                             {service.title}
                           </span>
-                          <span className="mt-0.5 block text-xs leading-snug text-slate-400">
+                          <span className="mt-0.5 line-clamp-3 block text-xs leading-snug text-slate-400">
                             {service.excerpt}
                           </span>
                         </span>

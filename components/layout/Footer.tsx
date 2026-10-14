@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Logo from "@/components/layout/Logo";
 import CookieSettingsButton from "@/components/ui/CookieSettingsButton";
-import { ClockIcon, MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
+import { MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
 import { navLinks, site } from "@/lib/site";
 
 export default function Footer() {
@@ -18,7 +18,7 @@ export default function Footer() {
             rel="noreferrer noopener"
             className="mt-5 inline-flex items-center gap-2 text-sm font-semibold text-slate-300 transition hover:text-tape-300"
           >
-            Отзывы и работы в Одноклассниках
+            OK.ru
           </a>
         </div>
 
@@ -44,7 +44,6 @@ export default function Footer() {
                 <a href={site.phone.href} className="block text-base font-bold text-white transition hover:text-tape-300">
                   {site.phone.display}
                 </a>
-                <span className="text-xs text-slate-500">{site.phone.note}</span>
               </span>
             </li>
             <li className="flex gap-3">
@@ -53,19 +52,13 @@ export default function Footer() {
                 <a href={site.email.href} className="block font-semibold text-white transition hover:text-tape-300">
                   {site.email.display}
                 </a>
-                <span className="text-xs text-slate-500">{site.email.note}</span>
               </span>
             </li>
             <li className="flex gap-3">
               <PinIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
               <span>
-                <span className="block font-semibold text-white">{site.address.note}</span>
-                <span className="text-xs text-slate-500">{site.address.display}</span>
+                <span className="block font-semibold text-white">{site.address.display}</span>
               </span>
-            </li>
-            <li className="flex gap-3">
-              <ClockIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
-              <span className="text-xs text-slate-500">{site.workingHours}</span>
             </li>
           </ul>
         </div>
@@ -74,9 +67,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-3 py-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
           <div className="space-y-1">
-            <p>
-              © {new Date().getFullYear()} {site.name}. Все права защищены.
-            </p>
+            <p>© {new Date().getFullYear()} ПРОСТО ОКНА НАТЯЖНЫЕ ПОТОЛКИ.</p>
             <p>
               {site.operator.legalName}, ИНН {site.operator.inn}, {site.operator.ogrnLabel}{" "}
               {site.operator.ogrn}

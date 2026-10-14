@@ -7,6 +7,7 @@ import { ModalContext } from "@/components/modals/modal-context";
 import LeadForm from "@/components/ui/LeadForm";
 import Modal from "@/components/ui/Modal";
 import { CheckIcon, ShieldIcon } from "@/components/ui/icons";
+import { contactLead, fairPrice } from "@/lib/content";
 import { site } from "@/lib/site";
 
 type ModalKind = "callback" | "success" | null;
@@ -26,16 +27,14 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 
       <Modal open={active === "callback"} onClose={close} labelledBy="callback-title">
         <h2 id="callback-title" className="pr-10 text-2xl font-extrabold text-slate-900">
-          Обратный звонок
+          Свяжитесь с нами!
         </h2>
-        <p className="mt-2 text-sm text-slate-500">
-          Оставьте номер — перезвоним в течение рабочего дня и ответим на вопросы.
-        </p>
+        <p className="mt-2 text-sm text-slate-500">{contactLead}</p>
 
-        <LeadForm source="callback" buttonLabel="Жду звонка" className="mt-6" />
+        <LeadForm source="callback" buttonLabel="Отправить" className="mt-6" />
 
         <ul className="mt-6 space-y-2 border-t border-slate-100 pt-5 text-sm text-slate-500">
-          {["Замер бесплатный", "Работаем по договору", "Своя бригада монтажников"].map((item) => (
+          {["Замер бесплатно", "Доставка бесплатная", fairPrice].map((item) => (
             <li key={item} className="flex items-center gap-2">
               <ShieldIcon className="h-4 w-4 shrink-0 text-pane-600" />
               {item}
@@ -53,11 +52,10 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
             Заявка отправлена
           </h2>
           <p className="mt-2 text-slate-500">
-            Перезвоним в течение рабочего дня. Если вопрос срочный — звоните{" "}
+            {contactLead}{" "}
             <a href={site.phone.href} className="font-semibold text-pane-600">
               {site.phone.display}
             </a>
-            .
           </p>
           <button type="button" onClick={close} className="btn btn-dark mt-6 w-full">
             Понятно

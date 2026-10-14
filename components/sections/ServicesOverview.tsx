@@ -10,10 +10,7 @@ export default function ServicesOverview() {
   return (
     <section id="services" className="scroll-mt-24 bg-white py-20 lg:py-28">
       <div className="container-page">
-        <SectionHeading
-          title="Две услуги, один подрядчик"
-          text="Устанавливаем окна и натягиваем потолки своими бригадами — от замера до сдачи объекта."
-        />
+        <SectionHeading title="Профессиональные услуги" />
 
         <div className="mt-12 grid gap-4 md:grid-cols-2">
           {servicesOverview.map((service, index) => (

@@ -45,7 +45,7 @@ export default function Logo({
         </span>
         <span
           className={`truncate text-[11px] font-medium tracking-wide ${
-            compact ? "hidden sm:block" : ""
+            compact ? "hidden sm:block xl:hidden" : ""
           } ${isLight ? "text-slate-300" : "text-slate-500"}`}
         >
           {site.tagline}

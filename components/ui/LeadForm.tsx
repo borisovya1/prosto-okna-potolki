@@ -12,7 +12,6 @@ type LeadFormProps = {
   buttonLabel?: string;
   className?: string;
   tone?: "light" | "dark";
-  withName?: boolean;
   details?: Record<string, string>;
 };
 
@@ -21,7 +20,6 @@ export default function LeadForm({
   buttonLabel = "Отправить заявку",
   className = "",
   tone = "light",
-  withName = false,
   details,
 }: LeadFormProps) {
   const { openSuccess } = useModals();
@@ -44,6 +42,11 @@ export default function LeadForm({
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
 
+    if (!name.trim()) {
+      setError("Введите ваше имя");
+      return;
+    }
+
     if (!isPhoneComplete(phone)) {
       setError("Введите номер телефона полностью");
       return;
@@ -60,7 +63,7 @@ export default function LeadForm({
     try {
       await submitLead({
         phone,
-        name: name || undefined,
+        name: name.trim(),
         source,
         details,
         consent,
@@ -95,17 +98,18 @@ export default function LeadForm({
       />
 
       <div className="flex flex-col gap-3">
-        {withName ? (
-          <input
-            type="text"
-            name="name"
-            value={name}
-            onChange={(event) => setName(event.target.value)}
-            placeholder="Ваше имя"
-            autoComplete="name"
-            className={fieldClass}
-          />
-        ) : null}
+        <input
+          type="text"
+          name="name"
+          value={name}
+          onChange={(event) => setName(event.target.value)}
+          placeholder="Ваше имя"
+          autoComplete="name"
+          aria-label="Имя"
+          required
+          maxLength={100}
+          className={fieldClass}
+        />
 
         <input
           type="tel"

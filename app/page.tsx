@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-import BeforeAfter from "@/components/sections/BeforeAfter";
+// import BeforeAfter from "@/components/sections/BeforeAfter";
 import ContactsSection from "@/components/sections/ContactsSection";
 import PageHero from "@/components/sections/PageHero";
 import ProcessSteps from "@/components/sections/ProcessSteps";
@@ -44,7 +44,7 @@ export default function HomePage() {
       <WorkGallery />
 
 
-      <BeforeAfter />
+      {/* <BeforeAfter /> */}
 
       <ProcessSteps />
 

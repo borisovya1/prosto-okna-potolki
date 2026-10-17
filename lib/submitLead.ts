@@ -1,7 +1,7 @@
 export type Lead = {
   /** Телефон в виде, который ввёл пользователь */
   phone: string;
-  name?: string;
+  name: string;
   comment?: string;
   /** Откуда пришла заявка: hero, okna, potolki, contacts, callback */
   source: string;

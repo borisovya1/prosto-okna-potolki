@@ -114,6 +114,11 @@ export async function POST(request: Request) {
   }
 
   const name = asText(payload.name, 100);
+
+  if (!name) {
+    return NextResponse.json({ error: "Введите ваше имя" }, { status: 400 });
+  }
+
   const comment = asText(payload.comment, 1000);
   const source = asText(payload.source, 40);
   const sourceLabel = sourceLabels[source] ?? source ?? "Сайт";
@@ -135,7 +140,7 @@ export async function POST(request: Request) {
 
   const textLines = [`Новая заявка — ${site.name}`, "", `Телефон: ${phone}`];
 
-  if (name) textLines.push(`Имя: ${name}`);
+  textLines.push(`Имя: ${name}`);
   if (comment) textLines.push(`Комментарий: ${comment}`);
   for (const [key, value] of details) {
     textLines.push(`${key}: ${value}`);
@@ -144,7 +149,7 @@ export async function POST(request: Request) {
   textLines.push(`${sourceLabel} · ${receivedAt} МСК`);
 
   const htmlRows = [`<p><b>Телефон:</b> ${escapeHtml(phone)}</p>`];
-  if (name) htmlRows.push(`<p><b>Имя:</b> ${escapeHtml(name)}</p>`);
+  htmlRows.push(`<p><b>Имя:</b> ${escapeHtml(name)}</p>`);
   if (comment) htmlRows.push(`<p><b>Комментарий:</b> ${escapeHtml(comment)}</p>`);
   for (const [key, value] of details) {
     htmlRows.push(`<p><b>${escapeHtml(key)}:</b> ${escapeHtml(value)}</p>`);

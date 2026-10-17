@@ -57,7 +57,7 @@ export default function ContactsSection() {
           <h3 className="text-2xl font-extrabold">Свяжитесь с нами!</h3>
           <p className="mt-2 text-sm text-slate-500">{contactLead}</p>
 
-          <LeadForm source="contacts" withName buttonLabel="Отправить" className="mt-6" />
+          <LeadForm source="contacts" buttonLabel="Отправить" className="mt-6" />
 
           <ul className="mt-7 grid gap-2.5 border-t border-slate-200 pt-6 text-sm text-slate-600">
             {perks.map((perk) => (

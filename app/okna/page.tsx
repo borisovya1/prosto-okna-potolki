@@ -44,8 +44,9 @@ export default function WindowsPage() {
         items={windowExtras}
         visualVariant="glass"
         visualAlt="Пластиковые окна"
-        beforeSrc="/images/windows-before.jpg"
-        afterSrc="/images/windows-after.jpg"
+        // Сравнение «до/после» временно скрыто — чтобы вернуть, раскомментируйте
+        // beforeSrc="/images/windows-before.jpg"
+        // afterSrc="/images/windows-after.jpg"
       />
 
       <CtaBanner title="Заказать замер" text={fairPrice} buttonLabel="Заказать замер" />

@@ -1,0 +1,93 @@
+name: CI / Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    name: Проверка сборки
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          # v5 включает кэш сам при наличии packageManager и падает на глобальном Yarn 1
+          package-manager-cache: false
+
+      # Corepack включаем строго после setup-node, иначе на раннере остаётся Yarn 1
+      - name: Включить Corepack
+        run: corepack enable
+
+      - name: Кэш зависимостей Yarn
+        uses: actions/cache@v4
+        with:
+          path: ~/.yarn/berry/cache
+          key: ${{ runner.os }}-yarn-${{ hashFiles('yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Установка зависимостей
+        run: yarn install --immutable
+
+      - name: Линтер
+        run: yarn lint
+
+      - name: Проверка типов
+        run: yarn typecheck
+
+      - name: Сборка
+        run: yarn build
+
+  deploy:
+    name: Деплой на сервер
+    needs: check
+    # Пока секреты не заведены, держим переменную DEPLOY_ENABLED пустой, чтобы job не краснел
+    if: github.ref == 'refs/heads/main' && vars.DEPLOY_ENABLED == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Обновление и перезапуск по SSH
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          command_timeout: 20m
+          script: |
+            set -e
+            cd ${{ secrets.DEPLOY_PATH }}
+            # github.com с сервера доступен нестабильно: вместо ожидания 2+ минут
+            # делаем короткие попытки (таймаут 45 с) и повторяем до 6 раз
+            fetched=0
+            for attempt in 1 2 3 4 5 6; do
+              if timeout 45 git fetch origin main; then
+                fetched=1
+                break
+              fi
+              echo "git fetch: попытка $attempt не удалась, повтор через 15 с"
+              sleep 15
+            done
+            if [ "$fetched" != 1 ]; then
+              echo "GitHub недоступен с сервера после 6 попыток"
+              exit 1
+            fi
+            # Файл могли создать на сервере до того, как он появился в git
+            if ! git ls-files --error-unmatch ecosystem.config.cjs >/dev/null 2>&1; then
+              rm -f ecosystem.config.cjs
+            fi
+            git reset --hard origin/main
+            corepack enable
+            export COREPACK_ENABLE_DOWNLOAD_PROMPT=0
+            yarn install --immutable
+            NODE_OPTIONS=--max-old-space-size=1536 yarn build
+            pm2 startOrReload ecosystem.config.cjs --update-env
+            pm2 save

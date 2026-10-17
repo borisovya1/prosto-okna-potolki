@@ -32,7 +32,7 @@ export default function ServicesOverview() {
                   className="absolute inset-0"
                   style={{
                     background:
-                      "linear-gradient(to top, rgba(11,18,26,0.92) 0%, rgba(11,18,26,0.55) 45%, rgba(11,18,26,0) 75%)",
+                      "linear-gradient(to top, rgba(11,18,26,0.94) 0%, rgba(11,18,26,0.78) 50%, rgba(11,18,26,0.25) 85%, rgba(11,18,26,0.1) 100%)",
                   }}
                 />
 

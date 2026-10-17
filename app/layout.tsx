@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geologica, Onest } from "next/font/google";
 
+import YandexMetrika from "@/components/analytics/YandexMetrika";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import { ModalProvider } from "@/components/modals/ModalProvider";
@@ -84,6 +85,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           <main id="top">{children}</main>
           <Footer />
           <CookieConsent />
+          <YandexMetrika />
         </ModalProvider>
       </body>
     </html>

@@ -5,9 +5,10 @@ import { useCallback, useMemo, useState } from "react";
 
 import { ModalContext } from "@/components/modals/modal-context";
 import LeadForm from "@/components/ui/LeadForm";
+import MessengerLinks from "@/components/ui/MessengerLinks";
 import Modal from "@/components/ui/Modal";
 import { CheckIcon, ShieldIcon } from "@/components/ui/icons";
-import { contactLead, fairPrice } from "@/lib/content";
+import { contactLead, leadPerks } from "@/lib/content";
 import { site } from "@/lib/site";
 
 type ModalKind = "callback" | "success" | null;
@@ -33,8 +34,11 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
 
         <LeadForm source="callback" buttonLabel="Отправить" className="mt-6" />
 
+        <p className="mt-5 text-center text-xs text-slate-500">или напишите нам:</p>
+        <MessengerLinks className="mt-2" />
+
         <ul className="mt-6 space-y-2 border-t border-slate-100 pt-5 text-sm text-slate-500">
-          {["Замер бесплатно", "Доставка бесплатная", fairPrice].map((item) => (
+          {leadPerks.map((item) => (
             <li key={item} className="flex items-center gap-2">
               <ShieldIcon className="h-4 w-4 shrink-0 text-pane-600" />
               {item}
@@ -52,7 +56,7 @@ export function ModalProvider({ children }: { children: React.ReactNode }) {
             Заявка отправлена
           </h2>
           <p className="mt-2 text-slate-500">
-            {contactLead}{" "}
+            Мы перезвоним вам в ближайшее время. Если удобнее — позвоните сами:{" "}
             <a href={site.phone.href} className="font-semibold text-pane-600">
               {site.phone.display}
             </a>

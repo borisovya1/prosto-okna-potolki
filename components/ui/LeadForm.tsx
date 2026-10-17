@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, type FormEvent } from "react";
 
 import { useModals } from "@/components/modals/modal-context";
+import { reachGoal } from "@/lib/metrika";
 import { formatPhone, isPhoneComplete } from "@/lib/phone";
 import { submitLead } from "@/lib/submitLead";
 
@@ -69,6 +70,7 @@ export default function LeadForm({
         consent,
         company: company || undefined,
       });
+      reachGoal("lead");
       setPhone("");
       setName("");
       setConsent(false);

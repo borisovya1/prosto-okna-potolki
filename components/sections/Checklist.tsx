@@ -26,23 +26,30 @@ export default function Checklist({
   beforeSrc,
   afterSrc,
 }: ChecklistProps) {
+  // Сравнение «до/после» показываем, только если переданы оба фото
+  const withCompare = Boolean(beforeSrc && afterSrc);
+
   return (
     <section className="bg-white py-20 lg:py-28">
-      <div className="container-page grid gap-12 lg:grid-cols-[1fr_1.1fr] lg:items-center">
-        <Reveal className="lg:order-2" delay={0.1}>
-          <CompareSlider
-            className="aspect-4/5 w-full rounded-[2rem] border border-slate-200"
-            before={
-              <Visual src={beforeSrc} alt={`До: ${visualAlt}`} variant="worn" className="h-full w-full" />
-            }
-            after={
-              <Visual src={afterSrc} alt={`После: ${visualAlt}`} variant={visualVariant} className="h-full w-full" />
-            }
-          />
-          <p className="mt-3 text-center text-xs text-slate-400">
-            Потяните ползунок, чтобы сравнить «до» и «после»
-          </p>
-        </Reveal>
+      <div
+        className={`container-page grid gap-12 lg:items-center ${withCompare ? "lg:grid-cols-[1fr_1.1fr]" : ""}`}
+      >
+        {withCompare ? (
+          <Reveal className="lg:order-2" delay={0.1}>
+            <CompareSlider
+              className="aspect-4/5 w-full rounded-[2rem] border border-slate-200"
+              before={
+                <Visual src={beforeSrc} alt={`До: ${visualAlt}`} variant="worn" className="h-full w-full" />
+              }
+              after={
+                <Visual src={afterSrc} alt={`После: ${visualAlt}`} variant={visualVariant} className="h-full w-full" />
+              }
+            />
+            <p className="mt-3 text-center text-xs text-slate-400">
+              Потяните ползунок, чтобы сравнить «до» и «после»
+            </p>
+          </Reveal>
+        ) : null}
 
         <Reveal className="lg:order-1">
           <SectionHeading title={title} text={text} />

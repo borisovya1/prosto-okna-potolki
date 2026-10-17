@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 
 import Logo from "@/components/layout/Logo";
 import { useModals } from "@/components/modals/modal-context";
+import MessengerLinks from "@/components/ui/MessengerLinks";
 import {
   CeilingIcon,
   ChevronDownIcon,
@@ -129,6 +130,7 @@ export default function Header() {
               <a href={site.phone.href} className="block text-xl font-extrabold text-slate-900">
                 {site.phone.display}
               </a>
+              <MessengerLinks className="mt-4" />
               <button
                 type="button"
                 onClick={() => {
@@ -193,6 +195,7 @@ export default function Header() {
             </nav>
 
             <div className="flex shrink-0 items-center justify-self-end gap-2 sm:gap-3">
+              <MessengerLinks variant="icons" className="hidden xl:flex" />
               <a
                 href={site.phone.href}
                 className="hidden px-2 text-sm font-bold whitespace-nowrap text-slate-900 transition hover:text-pane-700 xl:inline-flex"
@@ -242,7 +245,7 @@ export default function Header() {
                         href={`/${service.slug}`}
                         className="group flex items-start gap-3"
                       >
-                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-pane-50 text-pane-600 transition group-hover:bg-tape-400 group-hover:text-slate-900 group-hover:text-white">
+                        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-lg bg-pane-50 text-pane-600 transition group-hover:bg-tape-400 group-hover:text-slate-900">
                           <Icon className="h-5 w-5" />
                         </span>
                         <span>

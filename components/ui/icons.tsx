@@ -175,3 +175,17 @@ export const ExpandIcon = (props: IconProps) => (
     <path d="M4 9V4h5M20 9V4h-5M4 15v5h5M20 15v5h-5" />
   </Svg>
 );
+
+export const WhatsAppIcon = (props: IconProps) => (
+  <Svg {...props}>
+    <path d="M3.5 20.5l1.2-4.1a8.5 8.5 0 1 1 3.2 3Z" />
+    <path d="M9 8.2c-.2 1.6.9 3.6 2.3 5 1.4 1.4 3.4 2.4 5 2.2l.9-1.6-2.1-1.1-1 .8a5.3 5.3 0 0 1-2.6-2.6l.8-1-1.1-2.1Z" />
+  </Svg>
+);
+
+export const TelegramIcon = (props: IconProps) => (
+  <Svg {...props}>
+    <path d="M20.6 4.2 3.2 11c-.8.3-.8 1.4 0 1.7l4.3 1.5 1.7 5.2c.2.7 1.1.9 1.6.4l2.5-2.4 4.6 3.4c.6.4 1.4.1 1.6-.6l2.6-14.6c.1-.8-.7-1.4-1.5-1.1Z" />
+    <path d="m7.5 14.2 9.3-6.4-6.6 7.5" />
+  </Svg>
+);

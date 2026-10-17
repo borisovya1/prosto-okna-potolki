@@ -2,7 +2,7 @@ import Link from "next/link";
 
 import Logo from "@/components/layout/Logo";
 import CookieSettingsButton from "@/components/ui/CookieSettingsButton";
-import { MailIcon, PhoneIcon, PinIcon } from "@/components/ui/icons";
+import { MailIcon, PhoneIcon, PinIcon, TelegramIcon } from "@/components/ui/icons";
 import { navLinks, site } from "@/lib/site";
 
 export default function Footer() {
@@ -45,6 +45,30 @@ export default function Footer() {
                   {site.phone.display}
                 </a>
               </span>
+            </li>
+            {/* WhatsApp временно скрыт
+            <li className="flex gap-3">
+              <WhatsAppIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
+              <a
+                href={site.messengers.whatsapp}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="font-semibold text-white transition hover:text-tape-300"
+              >
+                WhatsApp
+              </a>
+            </li>
+            */}
+            <li className="flex gap-3">
+              <TelegramIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
+              <a
+                href={site.messengers.telegram}
+                target="_blank"
+                rel="noreferrer noopener"
+                className="font-semibold text-white transition hover:text-tape-300"
+              >
+                Telegram
+              </a>
             </li>
             <li className="flex gap-3">
               <MailIcon className="mt-0.5 h-5 w-5 shrink-0 text-tape-400" />
